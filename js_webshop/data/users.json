@@ -4,6 +4,11 @@
       "id": "1",
       "email": "lmadsen@mail.com",
       "pwd": "pepe"
+    },
+    {
+      "id": 2,
+      "email": "test@kea.dk",
+      "pwd": "Testing"
     }
   ]
 }

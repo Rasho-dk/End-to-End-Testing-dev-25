@@ -1,7 +1,7 @@
-import { baseUrl } from './info.js';
+import { baseUrl } from "./info.js";
 
-export const getUser = (email) => {
-    return fetch(baseUrl + '/users?q=' + email)
-    .then(response => response.json())
-    .catch(error => console.log(error));
+export const getUser = async (email) => {
+  return fetch(baseUrl + "/users?q=" + email)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
 };
