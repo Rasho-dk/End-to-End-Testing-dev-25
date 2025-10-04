@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  js_webshop:
+    build:
+      context: ./js_webshop
+      dockerfile: Dockerfile
+    container_name: js_webshop
+    ports:
+      - "5500:80"
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

@@ -1,47 +1,58 @@
-# Implicit vs. Explicit Waits in Selenium C-sharp
+# 🛒 JS Webshop
 
-When working with Selenium WebDriver in C#, handling waits is crucial for ensuring that your tests run smoothly and reliably. There are two primary types of waits: implicit and explicit. Understanding the differences between them can help you choose the right approach for your test scenarios.
+![Docker](https://img.shields.io/badge/docker-ready-blue)
 
-## Implicit Wait
-
-- **Definition**: Tells WebDriver to poll the DOM for a certain amount of time when trying to find any element.
-- **Scope**: Applies globally to all element searches.
-- **Usage**: Set once per WebDriver instance.
-- **Example**:
-
-  ```csharp
-  _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-  ```
-
-- **Limitation**: Only waits for the presence of elements, not for other conditions (like visibility or clickability).
+A modern web shop demo project featuring a **static frontend** hosted with **nginx** and a **mock REST API** powered by **json-server**.  
+Ideal for end-to-end testing, learning, and rapid prototyping.
 
 ---
 
-## Explicit Wait
+## 🚀 Features
 
-- **Definition**: Waits for a specific condition to occur before proceeding.
-- **Scope**: Applied to specific elements or conditions.
-- **Usage**: Used when you need to wait for a particular event (e.g., element to be clickable).
-- **Example**:
-
-  ```csharp
-  var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-  wait.Until(ExpectedConditions.ElementIsVisible(By.Id("myElement")));
-  ```
-
-- **Advantage**: More flexible; can wait for custom conditions.
-
-## Comparison Table
-
-| Feature     | Implicit Wait         | Explicit Wait                    |
-| ----------- | --------------------- | -------------------------------- |
-| Scope       | Global                | Specific element/condition       |
-| Setup       | Once per session      | Per use case                     |
-| Conditions  | Only element presence | Any condition (visibility, etc.) |
-| Flexibility | Low                   | High                             |
+- Static frontend served via **nginx**
+- Mock REST API for users (`data/users.json`)
+- **Dockerized** for quick setup and deployment
+- **Selenium-ready** for automated E2E testing
 
 ---
 
-## Tip
+## 🏁 Getting Started
 
-Use explicit waits for dynamic or complex UI interactions. Avoid mixing both types, as it can lead to unpredictable wait times.
+### Prerequisites
+
+- [Docker](https://www.docker.com/get-started) installed
+
+### Accessing the Project
+
+- **Frontend:** [http://localhost:80](http://localhost:80)
+- **API:** [http://localhost:3000/users](http://localhost:3000/users)
+
+---
+
+## 🧪 Testing
+
+Automated E2E tests are provided using Selenium and Cypress.
+Run tests against the running shop and API using the provided Bash script.
+
+### Running Tests
+
+1. **Make the script executable (if needed):**
+
+    ```bash
+    chmod +x test-with-shop.sh
+    ```
+
+2. **Run the script:**
+
+    ```bash
+    ./test-with-shop.sh
+    ```
+
+The script will:
+
+- Start the webshop
+- Wait until the shop is healthy
+- Run Selenium tests and Cypress tests
+- Stop the container after tests
+
+---
