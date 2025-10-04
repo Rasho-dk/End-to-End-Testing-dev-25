@@ -24,6 +24,6 @@ docker-compose up --build -d
 echo "Waiting for js_webshop to be healthy again..."
 wait_for_healthy
 
-(cd cypress_tst && npm run e2e:chrome)
+(cd cypress_tst && npm install && npm run e2e:chrome)
 
 docker-compose down

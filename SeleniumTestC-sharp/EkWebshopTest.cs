@@ -21,7 +21,7 @@ namespace SeleniumTestC_sharp
             _driver = new ChromeDriver();
             // _appUrl = "http://127.0.0.1:5500/js_webshop/index.html";
             _appUrl = "http://127.0.0.1:5500/";
-            _driver.Manage().Window.Minimize();
+            _driver.Manage().Window.Maximize();
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             _signupPage = new SignupPage(_driver);
