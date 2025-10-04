@@ -19,7 +19,8 @@ namespace SeleniumTestC_sharp
         public void Initialize()
         {
             _driver = new ChromeDriver();
-            _appUrl = "http://127.0.0.1:5500/js_webshop/index.html";
+            // _appUrl = "http://127.0.0.1:5500/js_webshop/index.html";
+            _appUrl = "http://127.0.0.1:5500/";
             _driver.Manage().Window.Minimize();
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
@@ -40,8 +41,6 @@ namespace SeleniumTestC_sharp
             const string postalCode = "2200";
             const string city = "Copenhagen";
             const string creditCardName = "Pernille L. Hansen";
-            const string expirationDate = "December";
-            const string expirationYear = "2027";
             const string cvv = "666";
             var js = (IJavaScriptExecutor)_driver;
 
@@ -49,6 +48,10 @@ namespace SeleniumTestC_sharp
             _signupPage.Signup(Email, Password);
             //login after signup
             Task.Delay(5000).Wait();
+
+            var alertSelector = GetElementByCss("button[title='Close Alert']");
+            if (alertSelector.Displayed)
+                alertSelector.Click();
 
             var loginLinks = _driver.FindElements(By.CssSelector("a[href*='login.html']"));
             if (loginLinks.Count <= 0) return;

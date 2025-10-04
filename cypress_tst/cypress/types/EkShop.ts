@@ -7,7 +7,7 @@ const signupPage: SignPage = {
     cy.get("#txtEmail").type(email);
     cy.get("#txtPassword").type(password);
     cy.get("#txtRepeatPassword").type(password);
-    cy.wait(2000);
+    cy.wait(5000);
     cy.get('input[type="submit"]').click();
   },
 };
@@ -20,4 +20,8 @@ const loginPage: SignPage = {
   },
 };
 
-export { loginPage, signupPage };
+const Article = (productName: string) => {
+  return `//article[header/h2[text()='${productName}']]`;
+};
+
+export { Article, loginPage, signupPage };

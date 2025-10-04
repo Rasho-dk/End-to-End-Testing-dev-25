@@ -1,6 +1,11 @@
 {
-  "devDependencies": {
-    "cypress": "^15.3.0",
-    "typescript": "^5.9.3"
-  }
+    "scripts": {
+        "cy:open": "cypress open",
+        "e2e:chrome": "cypress run --browser chrome"
+    },
+    "devDependencies": {
+        "cypress": "^15.3.0",
+        "cypress-xpath": "^2.0.1",
+        "typescript": "^5.9.3"
+    }
 }
