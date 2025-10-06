@@ -23,7 +23,12 @@ dotnet test SeleniumTestC-sharp
 docker-compose up --build -d
 echo "Waiting for js_webshop to be healthy again..."
 wait_for_healthy
-
 (cd cypress_tst && npm install && npm run e2e:chrome)
+
+# Run playwright tests
+docker-compose up --build -d
+echo "Waiting for js_webshop to be healthy again..."
+wait_for_healthy
+(cd Playwright-tst && npx playwright install && npx playwright test)
 
 docker-compose down
